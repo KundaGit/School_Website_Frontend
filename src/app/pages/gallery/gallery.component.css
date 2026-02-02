@@ -1,0 +1,13 @@
+.gallery-card img {
+  height: 220px;
+  object-fit: cover;
+}
+
+.gallery-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.2);
+}

@@ -1,0 +1,11 @@
+h2 {
+  letter-spacing: 0.5px;
+}
+
+label {
+  font-weight: 500;
+}
+
+button {
+  padding: 8px 24px;
+}

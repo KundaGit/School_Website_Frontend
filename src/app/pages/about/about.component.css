@@ -1,0 +1,58 @@
+.about-header h2 {
+  font-size: 36px;
+  font-weight: 700;
+  color: #2c2c2c;
+}
+
+.about-header p {
+  color: #777;
+  font-size: 16px;
+}
+
+.about-text h4 {
+  font-size: 22px;
+  font-weight: 600;
+  border-left: 4px solid #6A1B9A;
+  padding-left: 12px;
+  margin-bottom: 15px;
+}
+
+.about-text p {
+  color: #555;
+  line-height: 1.8;
+}
+
+.info-box {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+.info-box li {
+  font-size: 15px;
+  padding: 8px 0;
+  border-bottom: 1px dashed #eee;
+}
+
+.info-box li:last-child {
+  border-bottom: none;
+}
+
+.principal-card {
+  border-radius: 20px;
+  background: linear-gradient(135deg, #ffffff, #f9f6ff);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+  position: relative;
+}
+
+.principal-card::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 6px;
+  height: 100%;
+  background: #6A1B9A;
+  border-radius: 20px 0 0 20px;
+}

@@ -1,0 +1,75 @@
+<div class="container py-5">
+
+  <!-- Heading -->
+  <div class="text-center mb-5">
+    <h2 class="fw-bold">Photo Gallery</h2>
+    <p class="text-muted">
+      Glimpses of life at ABC Public School
+    </p>
+  </div>
+
+  <!-- Gallery Grid -->
+  <div class="row g-4">
+    <div
+      class="col-lg-4 col-md-6"
+      *ngFor="let img of images">
+
+      <div
+        class="card h-100 shadow-sm gallery-card"
+        (click)="openImage(img)"
+        style="cursor: pointer">
+
+        <img
+          [src]="img.src"
+          class="card-img-top"
+          [alt]="img.title">
+
+        <div class="card-body text-center">
+          <h6 class="fw-semibold mb-0">
+            {{ img.title }}
+          </h6>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Image Modal -->
+<div
+  class="modal fade show"
+  tabindex="-1"
+  style="display:block"
+  *ngIf="selectedImage">
+
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h5 class="modal-title">
+          {{ selectedImage.title }}
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          (click)="closeImage()">
+        </button>
+      </div>
+
+      <div class="modal-body text-center">
+        <img
+          [src]="selectedImage.src"
+          class="img-fluid rounded">
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<!-- Modal backdrop -->
+<div
+  class="modal-backdrop fade show"
+  *ngIf="selectedImage">
+</div>

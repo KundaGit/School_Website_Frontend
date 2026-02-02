@@ -27,9 +27,11 @@
               }
             ],
             "styles": [
+
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": ["node_modules/@popperjs/core/dist/umd/popper.min.js",
+  "node_modules/bootstrap/dist/js/bootstrap.min.js"]
           },
           "configurations": {
             "production": {
@@ -83,14 +85,15 @@
                 "glob": "**/*",
                 "input": "public"
               }
-            ],
-            "styles": [
-              "src/styles.css"
-            ],
-            "scripts": []
+            ]
+          
+            
           }
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }
