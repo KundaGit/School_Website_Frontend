@@ -35,3 +35,44 @@
 .navbar a.active {
   color: #FBC02D;
 }
+
+/* Logo in nav */
+
+
+.school-logo {
+  height: 48px;
+  width: 48px;              /* 👈 equal width-height */
+  object-fit: cover;        /* 👈 image distort na ho */
+  border-radius: 50%;       /* 👈 THIS IS THE MAGIC */
+  background: #6a5555;         /* optional: dark navbar pe clean look */
+  padding: .01px;             /* optional: thoda space */
+}
+
+.school-name {
+  font-size: 20px;
+  font-weight: 750;
+  color: #fff;
+  white-space: nowrap;
+}
+
+/* Mobile pe thoda chhota */
+@media (max-width: 576px) {
+  .school-logo {
+    height: 36px;
+  }
+  .school-name {
+    font-size: 16px;
+  }
+}
+
+.navbar-brand {
+  margin-left: -50px;   /* 👈 thoda left shift */
+}
+
+.navbar .container {
+  padding-left: 8px;
+}
+
+.navbar-nav {
+  margin-right: -50px;   /* 👈 adjust value */
+}

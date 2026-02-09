@@ -13,6 +13,9 @@ import { Router } from '@angular/router';
   styleUrl: './login.component.css',
 })
 export class LoginComponent {
+  showSuccess = false;
+  loading = false;
+  showPassword = false;
   loginForm;
   constructor(
     private fb: FormBuilder,
@@ -26,18 +29,34 @@ export class LoginComponent {
   }
   login() {
     if (this.loginForm.valid) {
+      this.loading = true;
+      setTimeout(() => {
+    this.loading = false;
+  }, 3000);
       this.http
         .post('http://localhost:3000/api/admin/login', this.loginForm.value)
         .subscribe({
           next: () => {
+             this.loading = false;
             localStorage.setItem('adminLoggedIn', 'true');
-            alert('Login Successful');
-            this.routes.navigate(['/admin/enquiries']);
+           
+            this.showSuccess = true;
+           
           },
           error: () => {
+            this.loading = false;
             alert('Invalid username or password');
           },
         });
     }
   }
+goToDashboard(){
+  this.showSuccess = false;
+  this.routes.navigate(['/admin/enquiries']);
+}
+
+togglePassword() {
+  this.showPassword = !this.showPassword;
+ 
+}
 }

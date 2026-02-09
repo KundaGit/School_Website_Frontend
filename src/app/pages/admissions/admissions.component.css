@@ -9,3 +9,117 @@ label {
 button {
   padding: 8px 24px;
 }
+
+
+/* ===== ADMISSION SECTION ===== */
+.admission-section {
+  background: linear-gradient(to bottom, #f8f9ff, #ffffff);
+}
+
+/* Title */
+.admission-title {
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  letter-spacing: 1px;
+  position: relative;
+  display: inline-block;
+}
+
+.admission-title::after {
+  content: '';
+  width: 70px;
+  height: 4px;
+  background: linear-gradient(90deg, #0d6efd, #6610f2);
+  display: block;
+  margin: 12px auto 0;
+  border-radius: 10px;
+}
+
+/* Subtitle */
+.admission-subtitle {
+  max-width: 600px;
+  margin: 10px auto 0;
+  font-size: 1rem;
+  color: #6c757d;
+}
+
+/* Left info card */
+.admission-section .bg-light {
+  background: #ffffff !important;
+  border-radius: 18px;
+  border-left: 6px solid #0d6efd;
+  transition: all 0.3s ease;
+}
+
+.admission-section .bg-light:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(0,0,0,.08);
+}
+
+/* Info list */
+.admission-section ul li {
+  font-size: 0.95rem;
+  margin-bottom: 6px;
+}
+
+/* Form card */
+.admission-section .card {
+  border-radius: 20px;
+  box-shadow: 0 12px 30px rgba(0,0,0,.08);
+}
+
+/* Inputs */
+.admission-section input,
+.admission-section select,
+.admission-section textarea {
+  border-radius: 12px;
+  padding: 12px 14px;
+  border: 1px solid #dee2e6;
+  transition: all .25s ease;
+  background: #fafbff;
+}
+
+.admission-section input:focus,
+.admission-section select:focus,
+.admission-section textarea:focus {
+  border-color: #0d6efd;
+  background: #fff;
+  box-shadow: 0 0 0 0.2rem rgba(13,110,253,.15);
+}
+
+/* Floating feel labels */
+.admission-section label {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #495057;
+}
+
+/* Submit button – BAWAL PART */
+.admission-section button {
+  width: 100%;
+  padding: 14px;
+  font-size: 1rem;
+  font-weight: 700;
+  border-radius: 40px;
+  background: linear-gradient(135deg, #0d6efd, #6610f2);
+  border: none;
+  transition: all .3s ease;
+}
+
+.admission-section button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(13,110,253,.4);
+}
+
+/* Disabled state */
+.admission-section button:disabled {
+  background: #adb5bd;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* Mobile polish */
+@media (max-width: 768px) {
+  .admission-section {
+    padding-top: 2rem;
+  }
+}

@@ -28,4 +28,20 @@
   color: #ffffff;
   text-decoration: underline;
 }
+/* FOOTER BRAND */
+.footer-brand {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-left: -40px;
+}
 
+/* LOGO */
+.footer-logo {
+  width: 46px;
+  height: 46px;
+  object-fit: contain;
+  border-radius: 50%;
+  background: #ffffff;
+  padding: .1px;
+}

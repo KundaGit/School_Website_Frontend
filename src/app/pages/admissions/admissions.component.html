@@ -1,10 +1,10 @@
-<div class="container py-5">
+<div class="container py-5 admission-section">
 
   <!-- Page Heading -->
   <div class="text-center mb-5">
-    <h2 class="fw-bold">Admissions Open</h2>
-    <p class="text-muted">
-      Admissions are open for Nursery to Class 6
+    <h2 class="fw-bold admission-title">Admissions Open</h2>
+    <p class="admission-subtitle">
+      Give your child the best start in a nurturing learning environment
     </p>
   </div>
 
@@ -44,17 +44,41 @@
           <form [formGroup]="admissionForm" (ngSubmit)="submitForm()">
 
             <div class="mb-3">
-              <label class="form-label">Student Name</label>
-              <input type="text" class="form-control" formControlName="studentName">
+              <label class="form-label">Student Name *</label>
+              <input class="form-control" formControlName="studentName">
+              <div class="text-danger small"
+                *ngIf="getControl('studentName')?.touched && getControl('studentName')?.invalid">
+
+                <div *ngIf="getControl('studentName')?.errors?.['required']">
+                  Student name is required
+                </div>
+
+                <div *ngIf="getControl('studentName')?.errors?.['minlength']">
+                  Minimum 3 characters required
+                </div>
+
+              </div>
+
             </div>
 
             <div class="mb-3">
-              <label class="form-label">Parent / Guardian Name</label>
-              <input type="text" class="form-control" formControlName="parentName">
+              <label class="form-label">Parent / Guardian Name *</label>
+              <input class="form-control" formControlName="parentName">
+
+              <div class="text-danger small"
+                *ngIf="getControl('parentName')?.touched && getControl('parentName')?.invalid">
+                <div *ngIf="getControl('parentName')?.errors?.['required']">
+                  Parent / Guardian name is required
+                </div>
+                <div *ngIf="getControl('parentName')?.errors?.['minlength']">
+                  Minimum 3 characters required
+                </div>
+              </div>
+
             </div>
 
             <div class="mb-3">
-              <label class="form-label">Class Applying For</label>
+              <label class="form-label">Class Applying For *</label>
               <select class="form-select" formControlName="classApplied">
                 <option value="">Select Class</option>
                 <option>Nursery</option>
@@ -67,21 +91,60 @@
                 <option>Class 5</option>
                 <option>Class 6</option>
               </select>
+              <div class="text-danger small"
+                *ngIf="getControl('classApplied')?.touched && getControl('classApplied')?.invalid">
+                Please select a class
+              </div>
             </div>
 
-            <div class="mb-3">
+            <!-- <div class="mb-3">
               <label class="form-label">Mobile Number</label>
-              <input type="text" class="form-control" formControlName="phone">
+              <input class="form-control" formControlName="phone">
+
+              <div class="text-danger small" *ngIf="getControl('phone')?.touched && getControl('phone')?.invalid">
+                <div *ngIf="getControl('phone')?.errors?.['required']">
+                  Mobile number is required
+                </div>
+                <div *ngIf="getControl('phone')?.errors?.['pattern']">
+                  Enter valid 10-digit Indian mobile number
+                </div>
+              </div>
+
+            </div> -->
+            <div class="mb-3">
+              <label class="form-label">Mobile Number *</label>
+
+              <div class="input-group">
+                <span class="input-group-text">🇮🇳 +91</span>
+
+                <input class="form-control" formControlName="phone" inputmode="numeric" maxlength="10"
+                  placeholder="Enter 10-digit mobile number" (keypress)="onlyNumber($event)" (input)="onPhoneInput()">
+              </div>
+
+              <div class="text-danger small" *ngIf="getControl('phone')?.touched && getControl('phone')?.invalid">
+                <div *ngIf="getControl('phone')?.errors?.['required']">
+                  Mobile number is required
+                </div>
+                <div *ngIf="getControl('phone')?.errors?.['pattern']">
+                  Enter valid 10-digit Indian mobile number
+                </div>
+              </div>
             </div>
 
             <div class="mb-3">
               <label class="form-label">Email (optional)</label>
               <input type="email" class="form-control" formControlName="email">
+              <div class="text-danger small" *ngIf="getControl('email')?.touched && getControl('email')?.invalid">
+                Enter a valid email address
+              </div>
             </div>
 
             <div class="mb-3">
-              <label class="form-label">Message</label>
+              <label class="form-label">Message *</label>
               <textarea class="form-control" rows="3" formControlName="message"></textarea>
+              <div class="text-danger small" *ngIf="getControl('message')?.touched && getControl('message')?.invalid">
+                Message is required
+              </div>
             </div>
 
             <button class="btn btn-primary" [disabled]="admissionForm.invalid">
