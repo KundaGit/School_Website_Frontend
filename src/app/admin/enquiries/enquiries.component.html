@@ -1,46 +1,100 @@
+
 <div class="container py-5">
 
   <!-- Header -->
-  <div class="d-flex justify-content-between align-items-center mb-4">
+   <button class="btn btn-outline-primary btn-sm" (click)="toggleDarkMode()">
+  <i class="fa" [ngClass]="isDarkMode ? 'fa-sun' : 'fa-moon'">Theme</i>
+</button>
+
+
+  <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-3">
     <h3 class="fw-bold mb-0">Admission Enquiries</h3>
-    <button class="btn btn-outline-danger btn-sm" (click)="logout()">
-      Logout
-    </button>
+    <div class="d-flex gap-2">
+      <button class="btn btn-success btn-sm" (click)="exportCSV()">
+        <i class="fa fa-file-csv"></i> Export CSV
+      </button>
+
+      <button class="logout-btn" (click)="openLogoutModal()">
+        <i class="fa fa-sign-out-alt"></i> Logout
+      </button>
+    </div>
+
+
   </div>
 
-  <!-- Table -->
-  <div class="table-responsive">
-    <table class="table table-bordered table-striped align-middle">
-      <thead class="table-dark">
-        <tr>
-          <th>#</th>
-          <th>Student</th>
-          <th>Parent</th>
-          <th>Class</th>
-          <th>Phone</th>
-          <th>Email</th>
-          <th>Message</th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <tr *ngFor="let e of enquiries; let i = index">
-          <td>{{ i + 1 }}</td>
-          <td>{{ e.student_name }}</td>
-          <td>{{ e.parent_name }}</td>
-          <td>{{ e.class_applied }}</td>
-          <td>{{ e.phone }}</td>
-          <td>{{ e.email || '-' }}</td>
-          <td>{{ e.message || '-' }}</td>
-        </tr>
-
-        <tr *ngIf="enquiries.length === 0">
-          <td colspan="7" class="text-center text-muted">
-            No enquiries found
-          </td>
-        </tr>
-      </tbody>
-    </table>
+  <div class="modal-backdrop-custom" *ngIf="showLogoutModal">
+    <div class="logout-modal">
+      <h5>Confirm Logout</h5>
+      <p>Are you sure you want to logout?</p>
+      <div class="actions">
+        <button class="btn btn-secondary" (click)="closeLogoutModal()">
+          Cancel
+        </button>
+        <button class="btn btn-danger" (click)="confirmLogout()">
+          Logout
+        </button>
+      </div>
+    </div>
   </div>
+
+  <div class="row mb-4">
+    <div class="col-md-4">
+      <div class="stat-card">
+        <h6>Total Enquiries</h6>
+        <h3>{{ enquiries.length }}</h3>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="card shadow-sm">
+    <div class="card-body p-0">
+      <div class="table-responsive">
+        <!-- table here -->
+
+        <table class="table table-bordered table-striped align-middle">
+          <thead class="table-dark">
+            <tr>
+
+              <th>#</th>
+              <th>Student</th>
+              <th>Parent</th>
+              <th>Class</th>
+              <th>Phone</th>
+              <th>Email</th>
+              <th>Message</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr *ngFor="let e of enquiries; let i = index">
+              <td>{{ i + 1 }}</td>
+              <td>{{ e.student_name }}</td>
+              <td>{{ e.parent_name }}</td>
+              <td>{{ e.class_applied }}</td>
+              <td>{{ e.phone }}</td>
+              <td>{{ e.email || '-' }}</td>
+              <td class="message-cell" [title]="e.message">
+                {{ e.message || '-' }}
+              </td>
+              <!-- <td>{{ e.message || '-' }}</td> -->
+            </tr>
+
+            <tr *ngIf="enquiries.length === 0">
+              <td colspan="7" class="text-center py-5 text-muted">
+                <i class="fa fa-inbox fa-2x mb-2"></i><br />
+                No enquiries found
+              </td>
+            </tr>
+
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+  </div>
+
+
+
 
 </div>

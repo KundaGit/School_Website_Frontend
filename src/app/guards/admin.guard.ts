@@ -4,13 +4,14 @@ import { CanActivateFn, Router } from '@angular/router';
 export const adminGuard: CanActivateFn = (route, state) => {
   
   const router = inject(Router);
+const token = localStorage.getItem('adminToken');
 
-  const isLoggedIn = localStorage.getItem('adminLoggedIn');
+if (token) {
+  return true;
+}
 
-  if (isLoggedIn === 'true') {
-    return true;
-  }
+router.navigate(['/admin/login']);
+return false;
 
-  router.navigate(['/admin/login']);
-  return false;
+  
 };

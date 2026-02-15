@@ -27,29 +27,51 @@ export class LoginComponent {
       password: ['', Validators.required],
     });
   }
+  // login() {
+  //   if (this.loginForm.valid) {
+  //     this.loading = true;
+  //     setTimeout(() => {
+  //   this.loading = false;
+  // }, 3000);
+  //     this.http
+  //       .post('http://localhost:3000/api/admin/login', this.loginForm.value)
+  //       .subscribe({
+  //         next: () => {
+  //            this.loading = false;
+  //           localStorage.setItem('adminLoggedIn', 'true');
+           
+  //           this.showSuccess = true;
+           
+  //         },
+  //         error: () => {
+  //           this.loading = false;
+  //           alert('Invalid username or password');
+  //         },
+  //       });
+  //   }
+  // }
+// With Jwt token
   login() {
-    if (this.loginForm.valid) {
-      this.loading = true;
-      setTimeout(() => {
-    this.loading = false;
-  }, 3000);
-      this.http
-        .post('http://localhost:3000/api/admin/login', this.loginForm.value)
-        .subscribe({
-          next: () => {
-             this.loading = false;
-            localStorage.setItem('adminLoggedIn', 'true');
-           
-            this.showSuccess = true;
-           
-          },
-          error: () => {
-            this.loading = false;
-            alert('Invalid username or password');
-          },
-        });
-    }
+  if (this.loginForm.valid) {
+    this.loading = true;
+
+   this.http
+  .post<any>('http://localhost:3000/api/admin/login', this.loginForm.value)
+  .subscribe({
+    next: (res) => {
+      localStorage.setItem('adminToken', res.token); // ✅ JWT save
+      localStorage.setItem('adminLoggedIn', 'true');
+      this.showSuccess = true;
+      this.loading = false;
+    },
+    error: () => {
+      this.loading = false;
+      alert('Invalid username or password');
+    },
+  });
   }
+}
+
 goToDashboard(){
   this.showSuccess = false;
   this.routes.navigate(['/admin/enquiries']);

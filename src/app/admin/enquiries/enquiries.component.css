@@ -7,3 +7,102 @@ th, td {
   
 }
 
+.logout-btn {
+  background: #dc3545;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.logout-btn:hover {
+  background: #b52a37;
+}
+
+
+
+/* logout pop up */
+.modal-backdrop-custom {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.logout-modal {
+  background: #fff;
+  padding: 20px 25px;
+  border-radius: 10px;
+  width: 320px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.logout-modal h5 {
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.logout-modal p {
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.logout-modal .actions {
+  display: flex;
+  justify-content: space-between;
+}
+
+:host {
+  display: block;
+  background: #f4f6f9;
+  min-height: 100vh;
+}
+.card {
+  border-radius: 10px;
+}
+/* Sticky table header */
+.table thead th {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+/* Hover highlight */
+.table tbody tr:hover {
+  background-color: #f1f5ff;
+  transition: 0.2s;
+}
+
+.message-cell {
+  max-width: 280px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.stat-card {
+  background: white;
+  border-radius: 10px;
+  padding: 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.05);
+}
+.stat-card h3 {
+  font-weight: 700;
+  color: #0d6efd;
+}
+
+.container {
+  max-width: 1200px;
+}
+.stat-card {
+  margin-top: 10px;
+}
+
+
