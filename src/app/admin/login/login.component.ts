@@ -45,10 +45,16 @@ export class LoginComponent {
       this.showSuccess = true;
       this.loading = false;
     },
-    error: () => {
-      this.loading = false;
-      alert('Invalid username or password');
-    },
+   error: (err) => {
+  this.loading = false;
+
+  if (err.status === 401) {
+    alert('Invalid username or password');
+  } else {
+    alert('Server issue. Please try again.');
+    console.error('Login error:', err);
+  }
+}
   });
   }
 }
