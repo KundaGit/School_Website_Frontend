@@ -27,36 +27,17 @@ export class LoginComponent {
       password: ['', Validators.required],
     });
   }
-  // login() {
-  //   if (this.loginForm.valid) {
-  //     this.loading = true;
-  //     setTimeout(() => {
-  //   this.loading = false;
-  // }, 3000);
-  //     this.http
-  //       .post('http://localhost:3000/api/admin/login', this.loginForm.value)
-  //       .subscribe({
-  //         next: () => {
-  //            this.loading = false;
-  //           localStorage.setItem('adminLoggedIn', 'true');
-           
-  //           this.showSuccess = true;
-           
-  //         },
-  //         error: () => {
-  //           this.loading = false;
-  //           alert('Invalid username or password');
-  //         },
-  //       });
-  //   }
-  // }
 // With Jwt token
   login() {
   if (this.loginForm.valid) {
+     // 🔥 CLEAR OLD LOGIN STATE
+  localStorage.removeItem('adminToken');
+  localStorage.removeItem('adminLoggedIn');
+
     this.loading = true;
 
    this.http
-  .post<any>('http://localhost:3000/api/admin/login', this.loginForm.value)
+  .post<any>('https://school-web-backend-5yye.onrender.com/api/admin/login', this.loginForm.value)
   .subscribe({
     next: (res) => {
       localStorage.setItem('adminToken', res.token); // ✅ JWT save

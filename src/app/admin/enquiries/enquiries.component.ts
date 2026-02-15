@@ -51,6 +51,8 @@ disableDarkMode() {
   }
   confirmLogout() {
     localStorage.removeItem('adminToken'); // ya token
+     localStorage.removeItem('adminLoggedIn');
+     localStorage.clear();
     this.showLogoutModal = false;
     this.router.navigate(['/admin/login'], { replaceUrl: true });
   }
@@ -63,6 +65,8 @@ disableDarkMode() {
   }
 
   logout() {
+     localStorage.removeItem('adminToken');
+  localStorage.removeItem('adminLoggedIn');
     this.router.navigate(['/admin/login'], { replaceUrl: true });
   }
 
